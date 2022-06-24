@@ -27,6 +27,7 @@
   /* this is nav background, hamburger drop down bg, and login border color */
   --neutral-color: #9E9A9A;
   --primary-color: #ffc300;
+  --primary-color-dark:rgb(209, 157, 27);
   
   /* main, header, and footer bg color */
   --primary-background-color: whitesmoke;
@@ -241,11 +242,6 @@ body {
 /* LINKS */
 a,
 a:visited {
-  color: var(--primary-color);
+  color: white;
   text-decoration: none;
-}
-
-a:hover,
-a:active {
-  color: black;
 }

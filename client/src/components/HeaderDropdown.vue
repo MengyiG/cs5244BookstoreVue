@@ -1,47 +1,30 @@
 <template>
-  <div class="main-menu-container">
-    <button class="button hamburger-button" @click="toggleMainMenu">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-    <ul class="main-menu-panel" :class="{ 'main-menu-open': mainMenuOpen }">
-      <router-link to="../About Us" tag="li" class="main-menu-item"
-        >About Us</router-link
-      >
-
-      <li class="sub-menu-container">
-        <router-link
-          to="../Community"
-          class="main-menu-item sub sub-menu-button"
-          >Categories</router-link
-        >
-        <ul class="sub-menu-panel">
-          <router-link to="../About Us" tag="li" class="sub-menu-item"
-            >Classics</router-link
-          >
-          <router-link to="../category/classics" tag="li" class="sub-menu-item"
-            >Fantasy</router-link
-          >
-          <router-link to="../Community" tag="li" class="sub-menu-item"
-            >Wellness</router-link
-          >
-          <router-link to="../Shipping" tag="li" class="sub-menu-item"
-            >Comedy</router-link
-          >
-          <router-link to="../Contact Us" tag="li" class="sub-menu-item"
-            >Romance</router-link
-          >
-        </ul>
-      </li>
-      <router-link to="../Community" tag="li" class="main-menu-item"
-        >Community</router-link
-      >
-      <router-link to="../Shipping" tag="li" class="main-menu-item"
-        >Shipping</router-link
-      >
-      <router-link to="../Contact Us" tag="li" class="main-menu-item"
-        >Contact Us</router-link
-      >
-    </ul>
+  <div class="menu-wrap">
+    <input type="checkbox" class="toggler" />
+    <div class="hamburger"><div></div></div>
+    <div class="menu">
+      <div>
+        <div>
+          <ul>
+            <li class="main-menu-item">
+              <router-link to="/">Home</router-link>
+            </li>
+            <li class="main-menu-item">
+              <router-link to="/">About Us</router-link>
+            </li>
+            <li class="main-menu-item">
+              <router-link to="../category/classics">Categories</router-link>
+            </li>
+            <li class="main-menu-item">
+              <router-link to="/">Shipping</router-link>
+            </li>
+            <li class="main-menu-item">
+              <router-link to="/">Contact Us</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,80 +45,143 @@ export default {
 </script>
 
 <style scoped>
-.main-menu-container {
-  position: relative;
-  align-self: center;
-}
-
-.main-menu-panel {
-  position: absolute;
-  right: -1rem;
-  transform: translateX(100%);
-  transition-duration: 300ms;
-  transition-property: transform;
-  transition-timing-function: ease-in-out;
-  background-color: var(--neutral-color);
-  color: var(--default-text-color);
-  cursor: pointer;
-}
-
-.main-menu-panel.main-menu-open {
-  transform: translate(0);
-  opacity: 96%;
+.menu-wrap {
+  position: fixed;
+  top: 22px;
+  right: 0;
   z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-.main-menu-item {
-  display: inline-block;
+.menu-wrap .toggler {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+.menu-wrap .hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  background: var(--primary-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*hamburger lines*/
+.menu-wrap .hamburger > div {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+/*top and bottom lines*/
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 2px;
+  background: black;
+}
+
+/*moves bottom line down*/
+.menu-wrap .hamburger > div:after {
+  top: 10px;
+}
+
+/*toggler animate*/
+.menu-wrap .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+/*turn lines into x*/
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/*rotate on hover when checked*/
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+/*show menu*/
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: 0.8s;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  right: 0;
   width: 100%;
   height: 100%;
-  padding: 0.8em 2em;
-  white-space: nowrap;
-  text-decoration: none;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-wrap .menu > div {
+  background: rgba(24, 39, 51, 0.85);
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vw;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 
 .main-menu-item:hover {
-  background-color: var(--primary-color);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  font-weight: 900;
-}
-
-.hamburger-button {
-  background-color: var(--primary-background-color);
-  border: none;
-}
-
-.hamburger-button:hover,
-.hamburger-button:active {
-  background: var(--primary-color);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-a,
-a:active,
-a:hover,
-a:visited {
-  color: var(--default-text-color);
-  text-decoration: none;
-}
-
-.sub-menu-panel {
-  background-color: silver;
-}
-
-.sub-menu-item {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  padding: 0.4em 2em;
-  white-space: nowrap;
-  text-decoration: none;
-}
-
-.sub-menu-item:hover {
-  background-color: orange;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  font-weight: 900;
+  background-color: var(--primary-color-dark);
+  border-radius: 50px;
+  transition: 0.65s;
+  cursor: pointer;
 }
 </style>

@@ -54,8 +54,8 @@ export default {
   color: black;
   border: 2px solid black;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  padding: 0.1rem 4rem;
+  border-radius: 30px;
+  padding: 0.3rem 4rem;
   font-size: 1.2rem;
   cursor: pointer;
   margin-top: 5rem;

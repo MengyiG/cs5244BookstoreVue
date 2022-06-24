@@ -43,7 +43,9 @@
         <div class="cart-count">0</div>
       </div>
     </div>
-    <header-dropdown-menu></header-dropdown-menu>
+    <div>
+      <header-dropdown-menu></header-dropdown-menu>
+    </div>
   </header>
 </template>
 
