@@ -31,19 +31,21 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
+    <div class="header-right">
+      <div class="user-login">
+        <button class="secondary-button">
+          <i class="fa-solid fa-user"></i><span> &nbsp; log in | sign in</span>
+        </button>
+      </div>
 
-    <div class="user-login-and-cart">
-      <button class="secondary-button">
-        <i class="fa-solid fa-user"></i><span> &nbsp; log in | sign in</span>
-      </button>
       <div class="cart-and-num">
         <div class="cart-icon icon-only-button">
-          <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+          <i class="fa-solid fa-cart-shopping fa-xl"></i
+          ><span>&nbsp;&nbsp;0</span>
         </div>
-        <div class="cart-count">0</div>
+        <!--        <div class="cart-count">0</div>-->
       </div>
-    </div>
-    <div>
+      <div></div>
       <header-dropdown-menu></header-dropdown-menu>
     </div>
   </header>
@@ -101,13 +103,12 @@ a.img-text:visited {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
   flex-shrink: 0;
-  margin-left: 10rem;
+  margin-right: 2rem;
 }
 
 .search-bar {
-  padding: 0.2em 1em;
+  padding: 0.18em 1em;
   background: white;
   width: 20em;
   border: 2px solid black;
@@ -127,19 +128,23 @@ a.img-text:visited {
   outline-color: var(--primary-color);
 }
 
-/* user login class includes user icon and sign button */
-.user-login-and-cart {
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.user-login {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 3rem;
 }
 
 .cart-and-num {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 2rem;
+  margin: 0 2rem;
 }
 
 .cart-count {

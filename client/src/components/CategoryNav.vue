@@ -10,11 +10,18 @@
         Fantasy
       </router-link>
       <router-link
-        to="../category/mystery"
+        to="../category/wellness"
         tag="li"
         class="button unselected-category-button"
       >
-        Mystery
+        Wellness
+      </router-link>
+      <router-link
+        to="../category/comedy"
+        tag="li"
+        class="button unselected-category-button"
+      >
+        Comedy
       </router-link>
       <router-link
         to="../category/romance"
